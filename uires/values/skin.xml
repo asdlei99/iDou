@@ -3,9 +3,9 @@
 <skin>
   <imglist name="skin_logo" src="img:png_logo"/>
   <colorrect name="skin_colorwnd" normal="#ffffff00" hover="#ffffff60" pushdown="#ffffff33"/>
-  <imglist name="skin_mydevice" src="img:png_mydevice" states="3"  alpha="255"/>
+  <imglist name="skin_mydevice" src="img:png_mydevice" states="3"/>
   <imglist name="skin_bell" src="img:png_bell"/>
-  <demoskin name="skin_bk"/>
+  <demoskin name="skin_bk" alpha="238"/>
   <imglist name="skin_btn" src="img:png_skinbtn" states="3"/>
   <imglist name="skin_connect_dev" src="img:png_connect_dev"/>
   <imglist name="skin_pro_pc_apps" src="img:png_pro_pc_apps"/>
