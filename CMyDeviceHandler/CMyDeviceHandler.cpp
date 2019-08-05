@@ -101,6 +101,8 @@ void CMyDeviceHandler::AddDev(const idevice_event_t* event, bool bCan)
 
 void CMyDeviceHandler::RemoveDev(const idevice_event_t* event)
 {
+	Cafctask::getSingleton().RemoveDev(event->udid);
+	CDataCenter::getSingleton().RemoveDevGUID(event->udid);
 	m_pTreeViewAdapter->RemoveDev(event->udid);
 	if (m_pTreeViewAdapter->GetItemCount() == 0)
 	{
@@ -108,11 +110,7 @@ void CMyDeviceHandler::RemoveDev(const idevice_event_t* event)
 	}
 	STabCtrlTemplate* pTab = m_pPageRoot->FindChildByID2<STabCtrlTemplate>(R.id.nav_dev_cmd);
 	SASSERT(pTab);
-	Cafctask::getSingleton().RemoveDev(event->udid);
-
-	m_filerecords.erase(event->udid);
-	 
-	CDataCenter::getSingleton().RemoveDevGUID(event->udid);
+	m_filerecords.erase(event->udid);	
 	pTab->RemoveItem(pTab->GetPageIndex(S_CA2T(event->udid), TRUE), 0);
 
 }

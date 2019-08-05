@@ -1,5 +1,5 @@
-﻿<SOUI width="388" height="-1"  margin="5,5,5,5"  resizable="0" toolWindow="1" translucent="1">
-  <root>
+﻿<SOUI margin="5,5,5,5"  resizable="0" toolWindow="1" translucent="1">
+  <root width="388" height="-1" >
     <window class="shadow_wnd">
       <window size="-2,-1" layout="vbox" padding="1,1,1,1">
         <caption size="-2,38" layout="hbox" gravity="top" colorText="#ffffff">
