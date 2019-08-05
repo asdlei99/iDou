@@ -1,7 +1,7 @@
-﻿<SOUI name="mainWindow" title="@string/title" bigIcon="ICON_LOGO:32" smallIcon="ICON_LOGO:16" width="1000" height="720"  margin="5,5,5,5"
+﻿<SOUI name="mainWindow" title="@string/title" bigIcon="ICON_LOGO:32" smallIcon="ICON_LOGO:16"  margin="5,5,5,5"
       resizable="1" wndType="appMain" appWnd="1" minSize="1000,720" sendWheel2Hover="1" translucent="1">
-  <root size="-2,-2">
-    <window name="root" size="-2,-2" skin="skin_bk" alpha="238" colorBorder="@color/black" margin="1,1,1,1" layout="vbox">
+  <root width="1000" height="720">
+    <window name="root" size="-2,-2" skin="skin_bk" alpha="238"  colorBorder="@color/black" margin="1,1,1,1" layout="vbox">
       <caption size="-2,88" layout="hbox" colorText="@color/white" interval="18" gravity="center">
         <img extend_left="18" skin="skin_logo"/>
         <imgbtn name="btn_mydevice" skin="skin_mydevice"/>
@@ -16,7 +16,7 @@
           <imgbtn name="btn_close" skin="skin_close" tip="close" animate="1" extend_right="2"/>
         </window>
       </caption>
-      <tabctrl name="tab_main"  size="-2,0" weight="1" curSel="0" animateSteps="10" tabHeight="0" colorBkgnd="@color/white">
+      <tabctrl name="tab_main" size="-2,0" weight="1" curSel="0" animateSteps="10" tabHeight="0" colorBkgnd="@color/white" alpha="255">
         <page title="我的设备">
           <include src="layout:XML_MyDevice"/>
         </page>

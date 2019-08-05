@@ -44,7 +44,7 @@ namespace SOUI
 		COLORREF GetThemeColor() const;
 
 		void SetHander(ISetOrLoadSkinHandler*skinhander);
-		virtual SIZE GetSkinSize();
+		virtual SIZE GetSkinSize()const;
 		virtual BOOL IgnoreState();
 		bool SaveSkin();
 		bool LoadSkin(SkinType, SkinLoadInf& saveInf);
@@ -53,8 +53,7 @@ namespace SOUI
 		virtual void OnColorize(COLORREF cr)
 		{}
 	protected:
-		virtual void _Draw(IRenderTarget *pRT, LPCRECT rcDraw, DWORD dwState, BYTE byAlpha);
-		
+		virtual void _DrawByIndex(IRenderTarget* pRT, LPCRECT rcDraw, int iState, BYTE byAlpha) const;
 		ISetOrLoadSkinHandler *m_ISetOrLoadSkinHandler;		
 		CSize m_csSize;		
 		bool m_bIsColor;

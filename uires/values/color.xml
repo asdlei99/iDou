@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <color>
-  <red value="rgb(255,0,0)"/>
-  <green value="rgb(0,255,0)"/>
-  <blue value="rgb(0,0,255)"/>
-  <black value="#000000"/>
-  <white value="rgb(255,255,255)"/>
-  <gray value="#888888"/>
-  <gray2 value="#cccccc"/>
-  <gray3 value="#eeeeee"/>
-  <gray4 value="#ececec"/>
-  <mainbk value="#236ee7"/>
-  <infotabbkpush value="#f4f4f4"/>
-  <infotabbknor value="#f0f0f0"/>
-  <infoborder value="#dddddd"/>
-  <disk_sys value="#8dcf66"/>
-  <disk_app value="#3d9aff"/>
-  <disk_photo value="#ef70a8"/>
-  <disk_other value="#26c9c5"/>
-  <disk_u value="#a962ff"/>
-  <disk_av value="#e5c750"/>
-  <disk_free value="#e6e6e6"/>
-  <item_sel value="#e5f3f2"/>
-  <item_hov value="#f2f2f2"/>
+  <red value="rgba(255,0,0,255)"/>
+  <green value="rgba(0,255,0,255)"/>
+  <blue value="rgba(0,0,255,255)"/>
+  <black value="#000000ff"/>
+  <white value="#ffffffff"/>
+  <gray value="#888888ff"/>
+  <gray2 value="#ccccccff"/>
+  <gray3 value="#eeeeeeff"/>
+  <gray4 value="#ecececff"/>
+  <mainbk value="#236ee7ff"/>
+  <infotabbkpush value="#f4f4f4ff"/>
+  <infotabbknor value="#f0f0f0ff"/>
+  <infoborder value="#ddddddff"/>
+  <disk_sys value="#8dcf66ff"/>
+  <disk_app value="#3d9affff"/>
+  <disk_photo value="#ef70a8ff"/>
+  <disk_other value="#26c9c5ff"/>
+  <disk_u value="#a962ffff"/>
+  <disk_av value="#e5c750ff"/>
+  <disk_free value="#e6e6e6ff"/>
+  <item_sel value="#e5f3f2ff"/>
+  <item_hov value="#f2f2f2ff"/>
 </color> 
  

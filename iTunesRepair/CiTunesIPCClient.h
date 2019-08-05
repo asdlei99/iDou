@@ -22,8 +22,8 @@ protected:
 	CAutoRefPtr<SOUI::IIpcHandle> m_ipcHandle;
 	SComMgr2 m_comMgr;
 };
-
-class CiTunesIPCClientWnd : public CSimpleWnd, public CiTunesIPCClient
+//SNativeWnd
+class CiTunesIPCClientWnd : public SNativeWnd, public CiTunesIPCClient
 {
 private:
 	CiTunesService m_iTunesService;
@@ -47,7 +47,7 @@ private:
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_DESTROY(OnDestroy)
 		CHAIN_MSG_MAP_2_IPC(m_ipcHandle)
-		CHAIN_MSG_MAP(CSimpleWnd)
+		CHAIN_MSG_MAP(SNativeWnd)
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 };

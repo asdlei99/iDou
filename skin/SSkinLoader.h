@@ -35,15 +35,8 @@ namespace SOUI
 			}
 			pugi::xml_document xmlDoc;
 			SStringTList strLst;
-			BOOL bLoad = FALSE;
-			if (2 == ParseResID(strXmlSkin, strLst))
-			{
-				bLoad = LOADXML(xmlDoc, strLst[1], strLst[0]);
-			}
-			else
-			{
-				bLoad = LOADXML(xmlDoc, strLst[0], RT_SKIN);
-			}
+			BOOL bLoad = LOADXML(xmlDoc, strXmlSkin);
+			
 			if (bLoad)
 			{
 				if (m_privateSkinPool->GetCount() > 0)
@@ -78,7 +71,7 @@ namespace SOUI
 					m_privateSkinPool->LoadSkins(xmlDoc.child(L"skin"));
 			}
 		}
-		void LoadSkin(SStringT respath,const TCHAR *strXmlSkin = _T("LoadSkinXml"))
+		void LoadSkin(SStringT respath,const TCHAR *strXmlSkin = _T("SkinXml:LoadSkinXml"))
 		{			
 // 			if (m_pResProvider)
 // 			{
@@ -99,15 +92,7 @@ namespace SOUI
 			}
 			pugi::xml_document xmlDoc;
 			SStringTList strLst;
-			BOOL bLoad=FALSE;
-			if (2 == ParseResID(strXmlSkin, strLst))
-			{
-				bLoad=LOADXML(xmlDoc, strLst[1], strLst[0]);
-			}
-			else
-			{
-				bLoad=LOADXML(xmlDoc, strLst[0], RT_SKIN);
-			}
+			BOOL bLoad = LOADXML(xmlDoc, strXmlSkin);
 			if (bLoad)
 			{
 				if (m_privateSkinPool->GetCount() > 0)

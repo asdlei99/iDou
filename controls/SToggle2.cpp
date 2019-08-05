@@ -13,8 +13,7 @@ namespace SOUI
 
 	void SToggle2::OnPaint(IRenderTarget *pRT)
 	{
-		CRect rcWnd = GetClientRect();
-		m_pSkin->Draw(pRT, GetWindowRect(),  (m_bToggled)?1:IIF_STATE3(GetState(),0,0,1));
+		m_pSkin->DrawByIndex(pRT, GetClientRect(),  (GetToggle())?1:0);
 	}
 
 	//CSize SToggle2::GetDesiredSize(LPCRECT pRcContainer)

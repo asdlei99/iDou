@@ -1,6 +1,6 @@
-﻿<SOUI name="mainWindow" title="@string/title" bigIcon="ICON_LOGO:32" smallIcon="ICON_LOGO:16" width="566" height="388"
+﻿<SOUI name="mainWindow" title="@string/title" bigIcon="ICON_LOGO:32" smallIcon="ICON_LOGO:16"
       resizable="0" wndType="normal" toolWindow="1" sendWheel2Hover="1" translucent="1">
-  <root size="-2,-2">
+  <root width="566" height="388">
     <window name="root" size="-2,-2" skin="skin_bk" alpha="238" colorBorder="@color/black" margin="1,1,1,1" layout="vbox">
       <caption size="-2,38" layout="hbox" colorText="@color/white" interval="18" gravity="center">
         <text extend_left="18" text="iTunes修复"/>

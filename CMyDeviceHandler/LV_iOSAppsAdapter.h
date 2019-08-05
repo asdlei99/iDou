@@ -99,7 +99,7 @@ public:
 	bool OnItemClick(EventItemPanelClick* pEvt)
 	{
 		SItemPanel* pItemPanel = sobj_cast<SItemPanel>(pEvt->sender);
-		SWND m_hHover = pItemPanel->SwndFromPoint(CPoint(GET_X_LPARAM(pEvt->lParam), GET_Y_LPARAM(pEvt->lParam)), FALSE);
+		SWND m_hHover = pItemPanel->SwndFromPoint(CPoint(GET_X_LPARAM(pEvt->lParam), GET_Y_LPARAM(pEvt->lParam)));
 		SWindow* pHover = SWindowMgr::GetWindow(m_hHover);
 		if (pHover && !pHover->IsDisabled(TRUE) && (pHover->GetID() == R.id.check))
 		{

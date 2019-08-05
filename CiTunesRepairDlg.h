@@ -6,7 +6,7 @@
 class CiTunesRepairDlg :public SHostDialog,public CiTunesIPCSvr,public IServer
 {
 public:
-	CiTunesRepairDlg():SHostDialog(_T("XML_dlg_itunesrepair")) {};
+	CiTunesRepairDlg():SHostDialog(_T("LAYOUT:XML_dlg_itunesrepair")) {};
 	~CiTunesRepairDlg() { };
 	
 	// Í¨¹ý IIpcSvrCallback ¼Ì³Ð
