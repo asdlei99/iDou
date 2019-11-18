@@ -3,7 +3,28 @@
 <skin>
   <imglist name="skin_logo" src="img:png_logo"/>
   <colorrect name="skin_colorwnd" normal="#ffffff00" hover="#ffffff60" pushdown="#ffffff33"/>
-  <imglist name="skin_mydevice" src="img:png_mydevice" states="3"/>
+  <imglist name="skin_mydevice" src="img:png_mydevice" states="3" >
+    <states>
+      <state index="0" value="normal"/>
+      <state index="1" value="hover"/>
+      <state index="1" value="hover|checked"/>
+      <state index="1" value="hover|pushdown"/>
+      <state index="1" value="hover|pushdown|checked"/>
+      <state index="2" value="pushdown"/>
+      <state index="2" value="checked"/>
+    </states>
+  </imglist> 
+  <imglist name="skin_apps" src="img:png_skin_apps" states="3">
+    <states>
+      <state index="0" value="normal"/>
+      <state index="1" value="hover"/>
+      <state index="1" value="hover|checked"/>
+      <state index="1" value="hover|pushdown"/>
+      <state index="1" value="hover|pushdown|checked"/>
+      <state index="2" value="pushdown"/>
+      <state index="2" value="checked"/>
+    </states>
+  </imglist>
   <imglist name="skin_bell" src="img:png_bell"/>
   <demoskin name="skin_bk" alpha="238"/>
   <imglist name="skin_btn" src="img:png_skinbtn" states="3"/>
@@ -28,7 +49,7 @@
   <imglist name="skin_restore" src="img:png_restore" states="3"/>
   <imglist name="skin_loading" src="img:png_loading" states="6"/>
   <imglist name="skin_btn_edit" src="img:png_btn_edit" states="3"/>
-  <imglist name="skin_apps" src="img:png_skin_apps" states="3"/>
+ 
   <imgframe name="skin_shadow" src="img:png_shadow" margin="9,5,9,11"/>
   <imgframe name="skin_shadow2" src="img:png_shadow2" margin="9,5,9,11"/>
   <imglist name="skin_repair" src="img:png_repair" states="3"/>

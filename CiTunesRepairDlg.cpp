@@ -2,6 +2,7 @@
 #include "CiTunesRepairDlg.h"
 #include <versionhelpers.h>
 
+#include <Sddl.h>
 //检查并根据系统版本选择打开程序方式
 BOOL ShellExecuteExOpen(SStringT appName, SStringT appPath, SStringT par,SStringT &ec)
 {
@@ -59,19 +60,97 @@ void CiTunesRepairDlg::OnNewConnection(IIpcHandle* pIpcHandle, IIpcConnection** 
 	*ppConn = new CiTunesIPCSvrConnect(pIpcHandle, this);
 }
 
-int CiTunesRepairDlg::GetBufSize() const
+SECURITY_ATTRIBUTES* Helper_BuildLowIntegritySA()
 {
-	return 1024;
+#define LOW_INTEGRITY_SDDL_SACL      SDDL_SACL             \
+	SDDL_DELIMINATOR      \
+	SDDL_ACE_BEGIN        \
+	SDDL_MANDATORY_LABEL  \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_NO_WRITE_UP      \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_ML_LOW           \
+	SDDL_ACE_END
+
+#define LOCAL_SYSTEM_FILE_ACCESS     SDDL_ACE_BEGIN        \
+	SDDL_ACCESS_ALLOWED   \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_FILE_ALL         \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_LOCAL_SYSTEM     \
+	SDDL_ACE_END
+
+#define EVERYONE_FILE_ACCESS         SDDL_ACE_BEGIN        \
+	SDDL_ACCESS_ALLOWED   \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_FILE_ALL         \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_EVERYONE         \
+	SDDL_ACE_END
+
+#define ALL_APP_PACKAGES_FILE_ACCESS SDDL_ACE_BEGIN        \
+	SDDL_ACCESS_ALLOWED   \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_FILE_ALL         \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_SEPERATOR        \
+	SDDL_ALL_APP_PACKAGES \
+	SDDL_ACE_END
+
+
+	SECURITY_ATTRIBUTES* sa = new SECURITY_ATTRIBUTES;
+	PSECURITY_DESCRIPTOR pSD = NULL;
+	LPCTSTR pszDesc = IsWindows8OrGreater()
+		? LOW_INTEGRITY_SDDL_SACL
+		SDDL_DACL
+		SDDL_DELIMINATOR
+		LOCAL_SYSTEM_FILE_ACCESS
+		EVERYONE_FILE_ACCESS
+		ALL_APP_PACKAGES_FILE_ACCESS
+		: LOW_INTEGRITY_SDDL_SACL
+		SDDL_DACL
+		SDDL_DELIMINATOR
+		LOCAL_SYSTEM_FILE_ACCESS
+		EVERYONE_FILE_ACCESS;
+
+	ConvertStringSecurityDescriptorToSecurityDescriptor(pszDesc, SDDL_REVISION_1, &pSD, NULL);
+	sa->nLength = sizeof(SECURITY_ATTRIBUTES);
+	sa->lpSecurityDescriptor = pSD;
+	sa->bInheritHandle = TRUE;
+	return sa;
+}
+
+
+void Helper_FreeSa(SECURITY_ATTRIBUTES* psa)
+{
+	if (psa->lpSecurityDescriptor)
+	{
+		LocalFree(psa->lpSecurityDescriptor);
+	}
+	psa->lpSecurityDescriptor = NULL;
+	delete psa;
 }
 
 void* CiTunesRepairDlg::GetSecurityAttr() const
 {
-	return NULL;
+	return Helper_BuildLowIntegritySA();
 }
 
 void CiTunesRepairDlg::ReleaseSecurityAttr(void* psa) const
 {
-
+	SECURITY_ATTRIBUTES* psa2 = (SECURITY_ATTRIBUTES*)psa;
+	Helper_FreeSa(psa2);
 }
 
 void CiTunesRepairDlg::OnConnected(IIpcConnection* pConn)

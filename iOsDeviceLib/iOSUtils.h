@@ -4,7 +4,7 @@
 #define __IOS_UTILS_HH__
 
 #include <souistd.h>
-#include <event/Events.h>
+#include <event/SEvents.h>
 #include <dirent.h>
 #include <tools/config_msvc.h>
 #include <libimobiledevice/mobilebackup2.h>

@@ -15,8 +15,9 @@ virtual bool HandleFun(IIpcHandle * IpcHandle,UINT uMsg, SOUI::SParamStream &ps)
 	{\
 		x param; \
 		IpcHandle->FromStream4Input(&param,ps.GetBuffer());\
-		ps.GetBuffer()->Seek(SOUI::IShareBuffer::seek_cur,sizeof(int));\
+		DWORD dwPos=ps.GetBuffer()->Tell();\
 		fun(param); \
+		ps.GetBuffer()->Seek(SOUI::IShareBuffer::seek_set,dwPos);\
 		IpcHandle->ToStream4Output(&param,ps.GetBuffer());\
 		bHandled = true;\
 	}

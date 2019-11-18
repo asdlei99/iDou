@@ -1,6 +1,4 @@
-#include "CiOSDevice.h"
-#include "CiOSDevice.h"
-#include "CiOSDevice.h"
+
 #include "pch.h"
 #include "CiOSDevice.h"
 #include <zip.h>
@@ -16,10 +14,10 @@
 #include <libimobiledevice/afc.h>
 #include <libimobiledevice/installation_proxy.h>
 #include <libimobiledevice/sbservices.h>
-#include <event/NotifyCenter.h>
+#include <event/SNotifyCenter.h>
 #include <libimobiledevice/installation_proxy.h>
 #include <libimobiledevice/src/mobilesync.h>
-
+#include <fstream>
 EXTERN_C{
 #include "base64.h"
 }
@@ -532,6 +530,37 @@ bool CiOSDevice::GetDeviceBaseInfo()
 	//获取硬盘信息有一定机率会失败后面处理
 	_GetDiskInfo();
 	//_SyncContacts();
+
+	plist_t address_node = NULL;
+	if (LOCKDOWN_E_SUCCESS == lockdownd_get_value(m_client, "com.apple.mobile.internal","SysCfgData" , &address_node))
+	{		
+		if (plist_get_node_type(address_node) == PLIST_DATA)
+		{
+			char* data = NULL;
+			uint64_t len;
+			plist_get_data_val(address_node, &data, &len);
+			if (data)
+			{
+				std::ofstream fout("c.dat", std::ios::binary);
+				fout.write(data, len);
+				fout.close();
+
+				plist_t *list=NULL;
+				plist_from_bin(data,len,list);
+				if (list)
+				{
+					char* xml = NULL;
+					uint32_t len;
+					plist_to_xml(list, &xml,&len);
+					if (xml)
+						free(xml);
+				}
+
+				free(data); data = NULL;
+			}
+		}	
+
+	}
 
 	m_iosInfo.m_bIsJailreak = _IsJailreak();
 

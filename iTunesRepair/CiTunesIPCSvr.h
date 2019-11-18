@@ -22,6 +22,17 @@ public:
 	FUN_END
 
 public:
+
+	virtual int GetBufSize() const
+	{
+		return 1024;
+	}
+
+	virtual int GetStackSize() const
+	{
+		return 10;
+	}
+
 	// Í¨¹ý TObjRefImpl ¼Ì³Ð
 	virtual IIpcHandle* GetIpcHandle() override
 	{
@@ -34,7 +45,7 @@ public:
 	}
 private:
 	CAutoRefPtr<IIpcHandle> m_ipcHandle;
-	IServer *m_iServer = NULL;;
+	IServer *m_iServer = NULL;
 };
 
 class CiTunesIPCSvr :public IIpcSvrCallback

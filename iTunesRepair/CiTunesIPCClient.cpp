@@ -1,12 +1,27 @@
 #include "stdafx.h"
 #include "CiTunesIPCClient.h"
-
+#include <SIpcObject/SIpcObject.h>
 CiTunesIPCClient::CiTunesIPCClient()
 {
-	CAutoRefPtr<IIpcFactory> ipcFac;
-	m_comMgr.CreateIpcObject((IObjRef * *)& ipcFac);
-	ipcFac->CreateIpcHandle(&m_ipcHandle);
+	CAutoRefPtr<IIpcFactory> ipcFactory;
+	IPC::SCreateInstance((IObjRef**)&ipcFactory);
+	ipcFactory->CreateIpcHandle(&m_ipcHandle);
 	m_ipcHandle->SetIpcConnection(this);
+}
+
+CiTunesIPCClient::~CiTunesIPCClient() {
+	m_ipcHandle->Disconnect();
+	m_ipcHandle = NULL;
+}
+
+int CiTunesIPCClient::GetBufSize() const
+{
+	return 1024;
+}
+
+int CiTunesIPCClient::GetStackSize() const
+{
+	return 10;
 }
 
 IIpcHandle* CiTunesIPCClient::GetIpcHandle()
@@ -30,7 +45,7 @@ BOOL CiTunesIPCClientWnd::OnInitDialog(HWND wndFocus, LPARAM lInitParam)
 	if (hr == S_OK)
 	{
 		Param_CONNECTED conneced;
-		GetIpcHandle()->CallFun(&conneced);
+		GetIpcHandle()->CallFun(&conneced);		
 	}
 	return hr == S_OK;
 }

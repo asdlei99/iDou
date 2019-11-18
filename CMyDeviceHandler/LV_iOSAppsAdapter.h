@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <helper\SMenuEx.h>
 
 class CAppsListAdapter :public SMcAdapterBaseEx
 {

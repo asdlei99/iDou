@@ -14,12 +14,8 @@ namespace SOUI
 
 	bool SDemoSkin::SetImage(IBitmap *pImg)
 	{
-		m_bSave = true;
-		if (m_pImg)
-			m_pImg->Release();
-		m_pImg = pImg;
-		if (m_pImg)
-		 m_pImg->AddRef();
+		m_bSave = true;		
+		m_pImg = pImg;		
 		return true;
 	}
 

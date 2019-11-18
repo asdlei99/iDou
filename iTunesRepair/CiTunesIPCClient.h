@@ -12,15 +12,13 @@ class CiTunesIPCClient :
 	//CiTunesIPCClient& operator =(CiTunesIPCClient&) = delete;
 public:
 	CiTunesIPCClient();
-	~CiTunesIPCClient(){
-		m_ipcHandle->Disconnect();
-		m_ipcHandle = NULL;
-	}
+	~CiTunesIPCClient();
+	virtual int GetBufSize() const override;
+	virtual int GetStackSize() const override;
 	virtual IIpcHandle* GetIpcHandle() override;
 	virtual void BuildShareBufferName(ULONG_PTR idLocal, ULONG_PTR idRemote, TCHAR szBuf[MAX_PATH]) const override;
 protected:
-	CAutoRefPtr<SOUI::IIpcHandle> m_ipcHandle;
-	SComMgr2 m_comMgr;
+	CAutoRefPtr<SOUI::IIpcHandle> m_ipcHandle;	
 };
 //SNativeWnd
 class CiTunesIPCClientWnd : public SNativeWnd, public CiTunesIPCClient

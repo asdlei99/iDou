@@ -10,8 +10,7 @@ public:
 	~CiTunesRepairDlg() { };
 	
 	// Í¨¹ý IIpcSvrCallback ¼Ì³Ð
-	virtual void OnNewConnection(IIpcHandle* pIpcHandle, IIpcConnection** ppConn) override;
-	virtual int GetBufSize() const override;
+	virtual void OnNewConnection(IIpcHandle* pIpcHandle, IIpcConnection** ppConn) override;	
 	virtual void* GetSecurityAttr() const override;
 	virtual void ReleaseSecurityAttr(void* psa) const override;
 	virtual void OnConnected(IIpcConnection* pConn) override;
