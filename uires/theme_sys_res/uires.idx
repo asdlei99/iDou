@@ -36,5 +36,11 @@
     <file name="SYS_WND_BKGND" path="sys_wnd_bkgnd.png"/>
     <file name="SYS_BTN_PREV" path="sys_btn_prev.png"/>
     <file name="SYS_BTN_NEXT" path="sys_btn_next.png"/>
+    <file name="SYS_SPIN_DOWN" path="sys_spin_down.png"/>
+    <file name="SYS_SPIN_UP" path="sys_spin_up.png"/>
+    <file name="SYS_TREE_CHECKBOX" path="sys_tree_checkbox.png"/>
+    <file name="SYS_TREE_TOGGLE" path="sys_tree_checkbox.png"/>
+    <file name="SYS_TREE_CHECKBOX" path="sys_tree_toggle.png"/>
+    <file name="SYS_TREE_LINES" path="sys_tree_lines.png"/>
   </PNG> 
 </resource>
