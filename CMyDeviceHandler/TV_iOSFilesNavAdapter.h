@@ -94,7 +94,7 @@ public:
 			ii2.data.bCan = true;
 			SetItemExpanded(item2, TRUE);
 
-			notifyBranchInvalidated(ITEM_ROOT);
+			notifyBranchChanged(ITEM_ROOT);
 		}
 	}
 

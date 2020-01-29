@@ -105,7 +105,7 @@ public:
 					pName->SetWindowText(GETSTRING(L"@string/noname"));
 			}
 			else
-			{				
+			{
 				pItem->EnableWindow(FALSE);
 				pName->SetWindowText(GETSTRING(L"@string/waitpair"));
 			}
@@ -145,14 +145,14 @@ public:
 			default:
 				break;
 			}
-			if (pItem->GetState() & WndState_Check)
-			{
-				((SItemPanel*)pItem)->SetSkin(GETSKIN(L"skin_bk",100));
-			}
-			else
-			{
-				((SItemPanel*)pItem)->SetSkin(NULL);
-			}			
+			//if (pItem->GetState() & WndState_Check)
+			//{
+			//	//((SItemPanel*)pItem)->SetSkin(GETSKIN(L"skin_bk",100));
+			//}
+			//else
+			//{
+			//	//((SItemPanel*)pItem)->SetSkin(NULL);
+			//}			
 		}
 	}
 
@@ -247,7 +247,7 @@ protected:
 				item.bUpdataApp = true;
 			InsertItem(item, hRoot);
 		}
-		notifyBranchInvalidated(ITEM_ROOT);
+		notifyBranchChanged(ITEM_ROOT);
 	}
 	void SetDevCan(LPCSTR id, bool can = true)
 	{
@@ -275,7 +275,7 @@ protected:
 			if (m_tree.GetItem(node).data.udid == id)
 			{
 				m_tree.DeleteItem(node);
-				notifyBranchInvalidated(ITEM_ROOT);
+				notifyBranchChanged(ITEM_ROOT);
 				break;
 			}
 			node = m_tree.GetNextSiblingItem(node);
